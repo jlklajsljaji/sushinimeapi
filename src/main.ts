@@ -31,10 +31,10 @@ export const tmdbApi = process.env.TMDB_KEY && process.env.TMDB_KEY;
 (async () => {
   const PORT = Number(process.env.PORT) || 3000;
 
-  await fastify.register(FastifyCors, {
-    origin: 'https://sushinime.site',
-    methods: 'GET',
-  });
+await fastify.register(FastifyCors, {
+  origin: ['https://sushinime.site', 'http://localhost:3000'], // Array of allowed origins
+  methods: ['GET'], // Allowed methods
+});
 
   if (process.env.NODE_ENV === 'DEMO') {
     console.log(chalk.yellowBright('DEMO MODE ENABLED'));
